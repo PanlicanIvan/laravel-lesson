@@ -29,6 +29,7 @@ class UpdatePostRequest extends FormRequest
                 'required', Rule::unique('posts')->ignore($postId), 'max:255'
             ],
             'post' => 'required',
+            'status' => 'nullable',
         ];
     }
 }

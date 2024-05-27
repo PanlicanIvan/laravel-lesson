@@ -39,7 +39,7 @@
                           <label for="floatingTextarea">Post</label>
                         </div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="status" {{ ($post->status ==1 ? 'checked' : '')}}>
+                            <input class="form-check-input" type="checkbox" id="status" name="status" {{ ($post->status ==1 ? 'checked' : '')}}>
                             <label class="form-check-label" for="flexSwitchCheckDefault">Post Status</label>
                         </div>
                         <div class="w-100 mt-5">

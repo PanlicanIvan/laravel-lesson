@@ -36,7 +36,7 @@
                         <tr>
                           <td>{{ $post->subject }}</td>
                           <td>{{ $post->post }}</td>
-                          <td>{{ $post->status }}</td>
+                          <td>{{ $post->status == 1 ? 'Publish' : 'Unpublish' }}</td>
                           <td>{{ $post->created_at }}</td>
                           <td>
                             <a href="{{ route('post.show', $post->id)}}" class="btn btn-primary btn-sm m-1" ><i class="bi bi-eye-fill"></i></a>

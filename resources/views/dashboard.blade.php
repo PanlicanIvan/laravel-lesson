@@ -11,6 +11,13 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{-- {{ __("You're logged in!") }} --}}
                     @include('layouts.partials.messages')
+                    <div class="container">
+                        <div class="row gap-4">
+                            <x-card title="Total of Posts" content="{{ $countposts}}"/>
+                            <x-card title="Total of Publish" content="{{ $countpublish}}"/>
+                            <x-card title="Total of Unpublish" content="{{ $countunpublish}}"/>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

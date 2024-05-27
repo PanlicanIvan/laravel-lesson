@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
+use function PHPUnit\Framework\isNull;
+
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
-
-use function PHPUnit\Framework\isNull;
 
 class PostController extends Controller
 {
@@ -15,7 +16,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        // $posts = Post::all();
+        $posts = Auth::user()->posts;
 
         return view('resources.post.index', ['posts' => $posts]);
         //
@@ -35,6 +37,7 @@ class PostController extends Controller
     public function store(StorePostRequest $request)
     {
        Post::create([
+            'user_id' => Auth::user()->id,
             'subject' => $request->subject,
             'post' => $request->post,
             'status' => (isNull($request->status) ? 0 : 1)
@@ -65,10 +68,12 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
+
+        // dd($request->all());
         $post->update([
             'subject' => $request->subject,
             'post' => $request->post,
-            'status' => (isNull($request->status) ? 0 : 1)
+            'status' => (isset($request->status) ? 1 : 0)
         ]);
 
         return redirect()->route('post.index')->with('message', 'Post updated successfully.');
